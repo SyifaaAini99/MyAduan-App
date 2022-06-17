@@ -11,5 +11,4 @@ My Aduan app is a game-changer for the user because it makes it easier for them 
 2. 24/7 Registration of Complaints
 3. User can view complaints of others too
 4. Categorization of Complaints into various categories
-5. Status of Complaint.
-
+5. Status of Complaint
