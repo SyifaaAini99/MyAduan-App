@@ -38,12 +38,13 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.InstiComplaints"
-        minSdkVersion 16
+        applicationId "com.example.MyAduan"
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+       
     }
 
     buildTypes {

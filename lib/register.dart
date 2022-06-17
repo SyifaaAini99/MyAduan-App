@@ -7,7 +7,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF181D3D),
+      color: Color(0xFF003153),
       child: SafeArea(
         child: Scaffold(
             body: Container(
@@ -19,7 +19,7 @@ class RegisterPage extends StatelessWidget {
                 clipper: CurveClipper(),
                 child: Container(
                   constraints: BoxConstraints.expand(),
-                  color: Color(0xFF181D3D),
+                  color: Color(0xFF003153),
                   child: Column(children: [
                     SizedBox(height: MediaQuery.of(context).size.height / 16),
                     Text(
@@ -45,10 +45,11 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  String hostelname;
+  String city;
   final _nameController = TextEditingController();
-  final _rollNoController = TextEditingController();
-  final _roomNoController = TextEditingController();
+  final _passportNoController = TextEditingController();
+  final _phoneNoController = TextEditingController();
+  final _addressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   User user;
 
@@ -69,10 +70,11 @@ class _RegisterFormState extends State<RegisterForm> {
       'name': _nameController.text,
       'uid': user.uid,
       'email': user.email,
-      'hostel': hostelname,
-      'rollNo': int.parse(_rollNoController.text),
-      'roomNo': _roomNoController.text,
-      'type': 'student',
+      'city': city,
+      'passportNo': int.parse(_passportNoController.text),
+      'phoneNo': _phoneNoController.text,
+      'address': _addressController.text,
+      'type': 'resident',
       'notification': [],
       'bookmarked': [],
       'category': "general",
@@ -86,7 +88,7 @@ class _RegisterFormState extends State<RegisterForm> {
       content: new Row(
         children: [
           CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF181D3D)),
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF003153)),
           ),
           Container(
               margin: EdgeInsets.only(left: 7),
@@ -142,17 +144,17 @@ class _RegisterFormState extends State<RegisterForm> {
                 TextFormField(
                   validator: (value) {
                     if (value == "") {
-                      return 'Roll Number cannot be left Empty';
+                      return 'Passport Number cannot be left Empty';
                     }
                     final n = num.tryParse(value);
                     if (n == null) {
-                      return '"$value" is not a valid roll number';
+                      return '"$value" is not a valid passport number';
                     }
-                    if (value.length != 8)
-                      return 'Roll Number must contain 8 digits';
+                    if (value.length != 12)
+                      return 'Passport Number must contain 12 digits';
                     return null;
                   },
-                  controller: _rollNoController,
+                  controller: _passportNoController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelStyle: TextStyle(
@@ -161,7 +163,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         borderSide: BorderSide(color: Colors.black)),
-                    labelText: 'Roll Number',
+                    labelText: 'Passport Number',
                   ),
                 ),
                 SizedBox(
@@ -178,38 +180,41 @@ class _RegisterFormState extends State<RegisterForm> {
                       hint: Container(
                         padding: EdgeInsets.symmetric(horizontal: 11),
                         child: Text(
-                          'Hostel',
+                          'City',
                           style: Theme.of(context)
                               .textTheme
                               .bodyText2
                               .copyWith(fontSize: 16),
                         ),
                       ),
-                      value: hostelname,
+                      value: city,
                       onChanged: (String newValue) {
                         setState(() {
-                          hostelname = newValue;
+                          city = newValue;
                         });
                       },
                       isExpanded: true,
                       style: Theme.of(context).textTheme.bodyText1,
                       items: <String>[
-                        'C.V. Raman',
-                        'Morvi',
-                        'Dhanrajgiri',
-                        'Rajputana',
-                        'Limbdi',
-                        'Vivekanand',
-                        'Vishwakarma',
-                        'Vishweshvaraiya',
-                        'Aryabhatt-I',
-                        'Aryabhatt-II',
-                        'S.N. Bose',
-                        'Ramanujan',
-                        'Gandhi Smriti Chhatravas (OLD)',
-                        'Gandhi Smriti Chhatravas (Extension)',
-                        'IIT (BHU) Girls’ Hostel',
-                        'S.C. Dey Girls',
+                        'Ayer Itam',
+                        'Balik Pulau',
+                        'Batu Ferringhi',
+                        'Batu Maung',
+                        'Bayan Lepas',
+                        'Bukit Mertajam',
+                        'Butterworth',
+                        'Gelugor',
+                        'Jelutong',
+                        'Kepala Batas',
+                        'Kubang Semang',
+                        'Nibong Tebal',
+                        'Penang Hill',
+                        'Perai',
+                        'Permatang Pauh',
+                        'Simpang Ampat',
+                        'Sungai Jawi',
+                        'Tanjong Bungah',
+                        'Tasek Gelugor',
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -234,20 +239,44 @@ class _RegisterFormState extends State<RegisterForm> {
                 TextFormField(
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Room Number cannot be left Empty';
+                      return 'Phone Number cannot be left Empty';
                     }
                     return null;
                   },
-                  controller: _roomNoController,
+                  controller: _phoneNoController,
                   decoration: InputDecoration(
                     labelStyle: TextStyle(
                       color: Colors.black,
                     ),
-                    labelText: 'Room',
+                    labelText: 'Phone Number',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         borderSide: BorderSide(color: Colors.black)),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value.trim().isEmpty) {
+                      return 'Address cannot be left Empty';
+                    }
+                    return null;
+                  },
+                  controller: _addressController,
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                    ),
+                    labelText: 'Address',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        borderSide: BorderSide(color: Colors.black)),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 SizedBox(
                   height: 40,
@@ -275,7 +304,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     highlightElevation: 5,
-                    color: Color(0xFF181D3D),
+                    color: Color(0xFF003153),
                   ),
                 )
               ],
@@ -290,7 +319,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     "assets/app_logo.png",
                   ),
                 ),
-                Text('© InstiComplaints',
+                Text('© MyAduan',
                     style: TextStyle(fontSize: 16, color: Colors.black)),
                 SizedBox(
                   height: 20,

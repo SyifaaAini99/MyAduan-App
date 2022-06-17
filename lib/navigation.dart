@@ -1,15 +1,12 @@
-import 'package:InstiComplaints/Compose.dart';
+import 'package:MyAduan/Compose.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'st_profile.dart';
-import 'package:InstiComplaints/feedPage.dart';
-import 'package:InstiComplaints/notifications.dart';
+import 'resident_profile.dart';
+import 'package:MyAduan/feedPage.dart';
+import 'package:MyAduan/notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'modifyModerators.dart';
-import 'ad_profile.dart';
 import 'loading.dart';
-import 'moderator_requests.dart';
 
 var user = FirebaseAuth.instance.currentUser;
 
@@ -42,15 +39,12 @@ class _User1State extends State<User1> {
             ];
             final List<Widget> children2 = [
               Feed(),
-              AdProfile(),
-              ModifyModerators()
             ];
             final List<Widget> children3 = [
               Feed(),
               Notifications(),
               Profile(),
               Compose(),
-              Requested(),
             ];
             void onTapped(int index) {
               setState(() {
@@ -60,14 +54,14 @@ class _User1State extends State<User1> {
             return Scaffold(
                 body: (user.data['type'] == 'admin')
                     ? children2[currentIndex]
-                    : (user.data['type'] == 'student')
+                    : (user.data['type'] == 'resident')
                         ? children1[currentIndex]
                         : children3[currentIndex],
                 bottomNavigationBar: (user.data['type'] == 'admin')
                     ? CurvedNavigationBar(
                         backgroundColor: Colors.white,
-                        color: Color(0xFF181d3d),
-                        buttonBackgroundColor: Color(0xFFF49F1C),
+                        color: Color(0xFF003153),
+                        buttonBackgroundColor: Color(0xFFF19570A),
                         height: 60,
                         animationDuration: Duration(
                           milliseconds: 200,
@@ -93,11 +87,11 @@ class _User1State extends State<User1> {
                         onTap: onTapped,
                         index: currentIndex,
                       )
-                    : (user.data['type'] == 'student')
+                    : (user.data['type'] == 'resident')
                         ? CurvedNavigationBar(
                             backgroundColor: Colors.white,
-                            color: Color(0xFF181d3d),
-                            buttonBackgroundColor: Color(0xFFF49F1C),
+                            color: Color(0xFF003153),
+                            buttonBackgroundColor: Color(0xFFF19570A),
                             height: 60,
                             animationDuration: Duration(
                               milliseconds: 200,
@@ -130,8 +124,8 @@ class _User1State extends State<User1> {
                           )
                         : CurvedNavigationBar(
                             backgroundColor: Colors.white,
-                            color: Color(0xFF181d3d),
-                            buttonBackgroundColor: Color(0xFFF49F1C),
+                            color: Color(0xFF003153),
+                            buttonBackgroundColor: Color(0xFFF19570A),
                             height: 60,
                             animationDuration: Duration(
                               milliseconds: 200,

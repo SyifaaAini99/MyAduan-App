@@ -4,16 +4,18 @@ class UserModel {
   String email;
   String category;
   String name;
-  int rollNo;
+  String address;
+  int passportNo;
   String type;
-  String roomNo;
-  String hostel;
+  String phoneNo;
+  String city;
   UserModel(
       {this.uid,
       this.email,
       this.name,
-      this.rollNo,
-      this.roomNo,
-      this.hostel,
+      this.address,
+      this.passportNo,
+      this.phoneNo,
+      this.city,
       this.category});
 }

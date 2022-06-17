@@ -56,34 +56,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
     // Obtain the auth details from the request
     final String email = googleUser.email;
-    if (email.substring(email.length - 11) != 'itbhu.ac.in') {
-      await GoogleSignIn().signOut();
-      return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Row(
-              children: [
-                Icon(Icons.error),
-                Text(' Sorry!'),
-              ],
-            ), //
-            content: SingleChildScrollView(
-              child: Text(
-                  "This email doesn't seem to belong to the IIT BHU domain. Please try again with your institute email"),
-            ),
-            actions: <Widget>[
-              RaisedButton(
-                child: Text('Close'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
+
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
@@ -126,31 +99,9 @@ class _MyLoginPageState extends State<MyLoginPage> {
                 SizedBox(
                   height: 20.0,
                 ),
-
-                // code for separately attaching logo and title of app on the background
-                // Column(
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   children: [
-                //     Image.asset("assets/app_logo_final0.png",
-                //       height: 300, width: 300, fit: BoxFit.fill,
-                //     ),
-                //     Text(
-                //       "InstiComplaints",
-                //       style: TextStyle(
-                //         fontFamily: 'Amaranth',
-                //         fontSize: 20.0,
-                //         fontWeight: FontWeight.w500,
-                //         decoration: TextDecoration.none,
-                //         color: Color(0xFF181D3D),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-
                 SizedBox(
                   height: 500.0,
                 ),
-
                 Container(
                   child: RaisedButton(
                     padding: EdgeInsets.fromLTRB(48.0, 12.0, 48.0, 9.0),
@@ -167,7 +118,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
                                 bottomRight: Radius.circular(20.0))),
-                    color: loginChange ? Colors.transparent : Color(0xFFF49F1C),
+                    color: loginChange ? Color(0xFF003153) : Color(0xFFF19570A),
                     onPressed: () {
                       loginStateChange();
                       _handleButtonClick();
@@ -180,7 +131,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                           fontFamily: 'JosefinSans',
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
-                          color: loginChange ? Colors.white : Color(0xFF181D3D),
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -204,7 +155,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                               topLeft: Radius.circular(20.0),
                               bottomRight: Radius.circular(20.0))),
                   color:
-                      registerChange ? Colors.transparent : Color(0xFFF49F1C),
+                      registerChange ? Color(0xFF003153) : Color(0xFFF19570A),
                   onPressed: () {
                     registerStateChange();
                     _handleButtonClick();
@@ -217,8 +168,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                         fontWeight: FontWeight.bold,
                         fontFamily: 'JosefinSans',
                         fontSize: 18.0,
-                        color:
-                            registerChange ? Colors.white : Color(0xFF181D3D),
+                        color: Colors.white,
                       ),
                     ),
                   ),

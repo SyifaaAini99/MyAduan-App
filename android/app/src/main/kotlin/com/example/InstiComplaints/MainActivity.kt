@@ -1,4 +1,4 @@
-package com.example.InstiComplaints
+package com.example.MyAduan
 
 import io.flutter.embedding.android.FlutterActivity
 

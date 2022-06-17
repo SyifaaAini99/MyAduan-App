@@ -1,5 +1,5 @@
-import 'package:InstiComplaints/UpdateNotification.dart';
-import 'package:InstiComplaints/loading.dart';
+import 'package:MyAduan/UpdateNotification.dart';
+import 'package:MyAduan/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -65,7 +65,7 @@ class _CameraState extends State<Camera> {
   }
 
   final picker = ImagePicker();
-  _openGallary(BuildContext context) async {
+  _openGallery(BuildContext context) async {
     final picture = await picker.getImage(source: ImageSource.gallery);
     this.setState(() {
       imageFile = File(picture.path);
@@ -144,7 +144,7 @@ class _CameraState extends State<Camera> {
                       ],
                     ),
                     onTap: () {
-                      _openGallary(context);
+                      _openGallery(context);
                     },
                   ),
                   GestureDetector(
@@ -198,7 +198,7 @@ class _CameraState extends State<Camera> {
                     padding: const EdgeInsets.all(5.0),
                     child: Icon(
                       Icons.photo_camera,
-                      color: Color(0xFF181d3d),
+                      color: Color(0xFF003153),
                       size: 35,
                     ),
                   ),

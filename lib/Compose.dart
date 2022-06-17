@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:InstiComplaints/ComplaintFiling.dart';
+import 'package:MyAduan/ComplaintFiling.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'DropDown.dart';
@@ -29,13 +29,13 @@ class BackgroundMaker extends StatelessWidget {
             ),
             Container(
                  height: MediaQuery.of(context).size.height * 0.035,
-                 color: Color(0xFF181D3D),
+                 color: Color(0xFF003153),
                ),*/
             ClipPath(
                 clipper: CurveClipper(),
                 child: Container(
                   constraints: BoxConstraints.expand(),
-                  color: Color(0xFF181D3D),
+                  color: Color(0xFF003153),
                   child: Column(children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15.0, 25.0, 0.0, 0.0),
@@ -52,7 +52,7 @@ class BackgroundMaker extends StatelessWidget {
                             width: 10.0,
                           ),
                           Text(
-                            'InstiComplaint',
+                            'MyAduan',
                             style: TextStyle(
                                 fontFamily: 'Amaranth',
                                 color: Colors.white,
@@ -206,11 +206,12 @@ class _ComposeState extends State<Compose> {
 
   String title = '';
   String description = '';
+  String address = '';
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF181D3D),
+      color: Color(0xFF003153),
       child: SafeArea(
         child: Scaffold(
             /*appBar: AppBar(
@@ -347,6 +348,47 @@ class _ComposeState extends State<Compose> {
                       ),
                     ),
                     SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      width: 400.0,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 0.8),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Address can't be left empty.";
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              address = value;
+                            });
+                          },
+                          //controller: addressController,
+                          minLines: 1,
+                          maxLines: 12,
+                          maxLength: 350,
+                          textAlignVertical: TextAlignVertical.center,
+                          style: TextStyle(
+                            height: 2.0,
+                          ),
+                          decoration: InputDecoration(
+                            isDense: true,
+                            labelText: 'Address:  ',
+                            alignLabelWithHint: true,
+                            labelStyle: TextStyle(
+                                color: Color.fromRGBO(24, 51, 98, 1),
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold),
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
                       height: 20.0,
                     ),
                     Row(
@@ -408,6 +450,7 @@ class _ComposeState extends State<Compose> {
                           title: title,
                           category: selectedCategory,
                           description: description,
+                          address: address,
                           images: imagesInComplaint,
                           filingTime: DateTime.now(),
                           status: status[0],
@@ -419,6 +462,7 @@ class _ComposeState extends State<Compose> {
                         });*/
                       //TODO: Add mail to database.
                       title = '';
+                      address = '';
                       description = '';
                       selectedCategory = null;
 
@@ -426,6 +470,7 @@ class _ComposeState extends State<Compose> {
                           complaint.title,
                           complaint.category,
                           complaint.description,
+                          complaint.address,
                           complaint.images,
                           complaint.filingTime,
                           complaint.status,
@@ -462,7 +507,7 @@ class _ComposeState extends State<Compose> {
                       color: Colors.white,
                     ),
                   ),
-                  color: Color(0xFF181D3D),
+                  color: Color(0xFF003153),
                 ),
               ),
               SizedBox(

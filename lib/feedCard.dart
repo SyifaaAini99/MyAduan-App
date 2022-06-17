@@ -9,6 +9,7 @@ class ComplaintOverviewCard extends StatefulWidget {
   final String email;
   final String category;
   final String description;
+  final String address;
   final String status;
   final filingTime;
   final upvotes;
@@ -22,6 +23,7 @@ class ComplaintOverviewCard extends StatefulWidget {
       this.filingTime,
       this.category,
       this.description,
+      this.address,
       this.status,
       this.upvotes,
       this.id})
@@ -74,12 +76,11 @@ class _ComplaintOverviewCardState extends State<ComplaintOverviewCard> {
                             fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    /*IconButton(
-                        icon: Icon(Icons
-                            .bookmark_border),
-                        onPressed: () {
-                          //TODO: Add color change
-                    })*/
+                    // IconButton(
+                    //     icon: Icon(Icons.bookmark_border),
+                    //     onPressed: () {
+                    //       //TODO: Add color change
+                    //     })
                   ],
                 ),
                 SizedBox(height: 20),
@@ -114,14 +115,27 @@ class _ComplaintOverviewCardState extends State<ComplaintOverviewCard> {
                 SizedBox(height: 30),
                 Row(
                   children: <Widget>[
+                    Icon(Icons.pin_drop),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Flexible(
                       child: Text(
-                        widget.description,
+                        widget.address,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 13),
                       ),
-                    )
+                    ),
                   ],
+                ),
+                SizedBox(height: 20),
+                SizedBox(width: 5),
+                Flexible(
+                  child: Text(
+                    widget.description,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
                 SizedBox(height: 7),
                 Row(
@@ -164,7 +178,13 @@ class _ComplaintOverviewCardState extends State<ComplaintOverviewCard> {
                     Column(
                       children: <Widget>[
                         IconButton(
-                          icon: Icon(Icons.arrow_upward,color: (upvoteArray.contains(FirebaseAuth.instance.currentUser.uid))?Colors.blue[400]:Colors.black,),
+                          icon: Icon(
+                            Icons.arrow_upward,
+                            color: (upvoteArray.contains(
+                                    FirebaseAuth.instance.currentUser.uid))
+                                ? Colors.blue[400]
+                                : Colors.black,
+                          ),
                           onPressed: () async {
                             final complaint = await FirebaseFirestore.instance
                                 .collection('complaints')

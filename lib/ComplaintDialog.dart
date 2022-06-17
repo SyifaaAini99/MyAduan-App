@@ -1,5 +1,5 @@
-import 'package:InstiComplaints/UpdateNotification.dart';
-import 'package:InstiComplaints/loading.dart';
+import 'package:MyAduan/UpdateNotification.dart';
+import 'package:MyAduan/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -71,7 +71,7 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                   fontSize: 20.0,
-                                                  color: Color(0xFF181D3D),
+                                                  color: Color(0xFF003153),
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
@@ -92,6 +92,13 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 12.0),
+                                          ),
+                                          SizedBox(
+                                            height: 10.0,
+                                          ),
+                                          Text(snapshot.data.data()['address']),
+                                          SizedBox(
+                                            height: 10.0,
                                           ),
                                         ],
                                       ),
@@ -203,7 +210,7 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                               30) /
                                           3,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFF181D3D),
+                                        color: Color(0xFF003153),
                                         shape: BoxShape.rectangle,
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular((0.6 *
@@ -268,7 +275,7 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                                       .height) /
                                               10,
                                           decoration: BoxDecoration(
-                                            color: Color(0xFF181D3D),
+                                            color: Color(0xFF003153),
                                             shape: BoxShape.rectangle,
                                           ),
                                           child: Icon(
@@ -313,7 +320,7 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                                     .height) /
                                             10,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFF181D3D),
+                                          color: Color(0xFF003153),
                                           shape: BoxShape.rectangle,
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.zero,
@@ -378,7 +385,9 @@ class _ComplaintDialogState extends State<ComplaintDialog> {
                                                           .height) /
                                                   10,
                                             ),
-                                            SizedBox(width: 4.0,),
+                                            SizedBox(
+                                              width: 4.0,
+                                            ),
                                             Text(
                                               snapshot.data
                                                   .data()['upvotes']

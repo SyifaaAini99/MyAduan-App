@@ -20,14 +20,6 @@ List complaints = [
   "Lost my Cycle",
   "Messy club common halls",
 ];
-Map<String, String> departments = {
-  'Administration': 'administration.jpg',
-  'Gymkhana': 'gymkhana.jpg',
-  'General': 'general.jpg',
-  'image': 'hostel.jpg',
-  'Campus': 'parliament.jpg',
-  'Proctor': 'proctor.jpg'
-};
 
 List notifications = List.generate(
     20,
@@ -84,17 +76,12 @@ class _TileState extends State<Tile> {
                           ),
                         ));
                   }
-                  //Map<String,String> notification = snapshot.data.data()['notification'][snapshot.data.data()['notification'].length-index-1];
+                  Map<String, String> notification = snapshot.data
+                          .data()['notification']
+                      [snapshot.data.data()['notification'].length - index - 1];
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/admin/${departments['image']}'),
-                        //backgroundImage: AssetImage(notif['dp']),
-                        backgroundColor: Colors.blue,
-                        radius: 25,
-                      ),
                       contentPadding: EdgeInsets.all(1.2),
                       title: Text(
                         "Status Updated",
@@ -203,7 +190,7 @@ class _NotificationsState extends State<Notifications> {
                     width: 20.0,
                   ),
                   Text(
-                    "InstiComplaints",
+                    "My Aduan",
                     style: TextStyle(
                       fontFamily: 'Amaranth',
                       fontSize: 20.0,

@@ -1,4 +1,4 @@
-import 'package:InstiComplaints/ComplaintDialog.dart';
+import 'package:MyAduan/ComplaintDialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -137,6 +137,18 @@ class _SearchState extends State<Search> {
                                     )
                                   ],
                                 ),
+                                SizedBox(height: 7),
+                                Row(
+                                  children: <Widget>[
+                                    Flexible(
+                                      child: Text(
+                                        doc.data()["address"],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -186,7 +198,7 @@ class _SearchState extends State<Search> {
           });
         },
       ),
-      backgroundColor: Color(0xFF181D3D),
+      backgroundColor: Color(0xFF003153),
       actions: [
         IconButton(
             icon: Icon(

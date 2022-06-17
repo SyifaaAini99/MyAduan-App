@@ -1,7 +1,7 @@
-import 'package:InstiComplaints/feedCard.dart';
+import 'package:MyAduan/feedCard.dart';
 import 'loading.dart';
 import 'UpdateNotification.dart';
-import 'package:InstiComplaints/search.dart';
+import 'package:MyAduan/search.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -20,22 +20,6 @@ bool isSwitched3 = true;
 bool isSwitched4 = true;
 bool isSwitched5 = true;
 bool isSwitched6 = true;
-bool isSwitched7 = true;
-bool isSwitched8 = true;
-bool isSwitched9 = true;
-bool isSwitched10 = true;
-bool isSwitched11 = true;
-bool isSwitched12 = true;
-bool isSwitched13 = true;
-bool isSwitched14 = true;
-bool isSwitched15 = true;
-bool isSwitched16 = true;
-bool isSwitched17 = true;
-bool isSwitched18 = true;
-bool isSwitched19 = true;
-bool isSwitched20 = true;
-bool isSwitched21 = true;
-bool isSwitched22 = true;
 
 class Feed extends StatefulWidget {
   const Feed({Key key}) : super(key: key);
@@ -115,6 +99,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                                         filingTime: document['filing time'],
                                         category: document['category'],
                                         description: document['description'],
+                                        address: document['address'],
                                         status: document['status'],
                                         upvotes: document['upvotes'],
                                         id: document.id,
@@ -167,7 +152,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height * 0.035,
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -175,7 +160,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                       child: ClipPath(
                           clipper: CurveClipper(),
                           child: Container(
-                            color: Color(0xFF181D3D),
+                            color: Color(0xFF003153),
                           )),
                     ),
                   ],
@@ -203,7 +188,7 @@ class _FeedState extends State<Feed> with SingleTickerProviderStateMixin {
                           width: 35.0,
                         ),
                         Text(
-                          'InstiComplaints',
+                          'MyAduan',
                           style: TextStyle(
                             fontSize: 25.0,
                             color: Colors.white,
@@ -325,28 +310,12 @@ class CurveClipper extends CustomClipper<Path> {
 }
 
 Map<String, bool> categoryComaplints = {
-  "Administration": isSwitched1,
-  "Gymkhana": isSwitched2,
-  "General": isSwitched3,
-  "Campus": isSwitched4,
-  "Proctor": isSwitched5,
-  "C. V. Raman": isSwitched6,
-  "Morvi": isSwitched7,
-  "Dhanrajgiri": isSwitched8,
-  "Rajputana": isSwitched9,
-  "Limbdi": isSwitched10,
-  "Vivekanand": isSwitched11,
-  "Vishwakarma": isSwitched12,
-  "Vishweshvariaya": isSwitched13,
-  "Aryabhatt-I": isSwitched14,
-  "Aryabhatt–II": isSwitched15,
-  "S. N. Bose": isSwitched16,
-  "S. Ramanujan": isSwitched17,
-  "Gandhi Smriti Chhatravas(Old)": isSwitched18,
-  "Gandhi Smriti Chhatravas(Extension)": isSwitched19,
-  "IIT (BHU) Girls Hostel": isSwitched20,
-  "S. C. Dey": isSwitched21,
-  "IIT Boys (Saluja)": isSwitched22,
+  "Road Issues": isSwitched1,
+  "Traffic light": isSwitched2,
+  "Parking": isSwitched3,
+  "Buildinng": isSwitched4,
+  "Dashcam": isSwitched5,
+  "Illegal waste disposal": isSwitched6,
 };
 
 class NavDrawer extends StatefulWidget {
@@ -397,7 +366,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   ),
                   Center(
                     child: Container(
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                       child: ListTile(
                         title: Center(
                           child: Padding(
@@ -422,7 +391,7 @@ class _NavDrawerState extends State<NavDrawer> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.filter_list,
-                            color: Color(0xFF181D3D),
+                            color: Color(0xFF003153),
                           ),
                           title: Text(
                             'Category',
@@ -437,7 +406,7 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (bool value) {
                                   setState(() {
                                     isSwitched1 = value;
-                                    categoryComaplints["Administration"] =
+                                    categoryComaplints["Road Issues"] =
                                         isSwitched1;
                                     _filter.notifyListeners();
                                   });
@@ -445,7 +414,7 @@ class _NavDrawerState extends State<NavDrawer> {
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('Administration'),
+                              title: Text(' Road Issues'),
                             ),
                             ListTile(
                               leading: Switch(
@@ -453,7 +422,7 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (value) {
                                   setState(() {
                                     isSwitched2 = value;
-                                    categoryComaplints["Gymkhana"] =
+                                    categoryComaplints["Traffic light"] =
                                         isSwitched2;
                                     _filter.notifyListeners();
                                   });
@@ -461,7 +430,7 @@ class _NavDrawerState extends State<NavDrawer> {
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('Gymkhana'),
+                              title: Text('Traffic Light'),
                             ),
                             ListTile(
                               leading: Switch(
@@ -469,14 +438,14 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (value) {
                                   setState(() {
                                     isSwitched3 = value;
-                                    categoryComaplints["General"] = isSwitched3;
+                                    categoryComaplints["Parking"] = isSwitched3;
                                     _filter.notifyListeners();
                                   });
                                 },
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('General'),
+                              title: Text('Parking'),
                             ),
                             ListTile(
                               leading: Switch(
@@ -484,14 +453,15 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (value) {
                                   setState(() {
                                     isSwitched4 = value;
-                                    categoryComaplints["Campus"] = isSwitched4;
+                                    categoryComaplints["Building"] =
+                                        isSwitched4;
                                     _filter.notifyListeners();
                                   });
                                 },
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('Campus'),
+                              title: Text('Building'),
                             ),
                             ListTile(
                               leading: Switch(
@@ -499,14 +469,14 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (value) {
                                   setState(() {
                                     isSwitched5 = value;
-                                    categoryComaplints["Proctor"] = isSwitched5;
+                                    categoryComaplints["Dashcam"] = isSwitched5;
                                     _filter.notifyListeners();
                                   });
                                 },
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('Proctor'),
+                              title: Text('Dashcam'),
                             ),
                             ListTile(
                               leading: Switch(
@@ -514,273 +484,15 @@ class _NavDrawerState extends State<NavDrawer> {
                                 onChanged: (value) {
                                   setState(() {
                                     isSwitched6 = value;
-                                    categoryComaplints["C. V. Raman"] =
-                                        isSwitched6;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('C. V. Raman'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched7,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched7 = value;
-                                    categoryComaplints["Morvi"] = isSwitched7;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Morvi'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched8,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched8 = value;
-                                    categoryComaplints["Dhanrajgiri"] =
-                                        isSwitched8;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Dhanrajgiri'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched9,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched9 = value;
-                                    categoryComaplints["Rajputana"] =
-                                        isSwitched9;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Rajputana'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched10,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched10 = value;
-                                    categoryComaplints["Limbdi"] = isSwitched10;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Limbdi'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched11,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched11 = value;
-                                    categoryComaplints["Vivekanand"] =
-                                        isSwitched11;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Vivekanand'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched12,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched12 = value;
-                                    categoryComaplints["Vishwakarma"] =
-                                        isSwitched12;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Vishwakarma'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched13,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched13 = value;
-                                    categoryComaplints["Vishweshvaraiya"] =
-                                        isSwitched13;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Vishweshvaraiya'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched14,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched14 = value;
-                                    categoryComaplints["Aryabhatt–I"] =
-                                        isSwitched14;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Aryabhatt-I'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched15,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched15 = value;
-                                    categoryComaplints["Aryabhatt-II"] =
-                                        isSwitched15;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('Aryabhatt-II'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched16,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched16 = value;
-                                    categoryComaplints["S. N. Bose"] =
-                                        isSwitched16;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('S. N. Bose'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched17,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched17 = value;
-                                    categoryComaplints["S. Ramanujan"] =
-                                        isSwitched17;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('S. Ramanujan'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched18,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched18 = value;
                                     categoryComaplints[
-                                            "Gandhi Smriti Chhatravas(Old)"] =
-                                        isSwitched18;
+                                        "Illegal waste disposal"] = isSwitched6;
                                     _filter.notifyListeners();
                                   });
                                 },
                                 activeTrackColor: Colors.grey[800],
                                 activeColor: Colors.white,
                               ),
-                              title: Text('Gandhi Smriti Chhatravas(Old)'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched19,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched19 = value;
-                                    categoryComaplints[
-                                            "Gandhi Smriti Chhatravas(Extension)"] =
-                                        isSwitched19;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title:
-                                  Text('Gandhi Smriti Chhatravas(Extension)'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched20,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched20 = value;
-                                    categoryComaplints[
-                                            "IIT (BHU) Girls Hostel"] =
-                                        isSwitched20;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('IIT (BHU) Girls Hostel'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched21,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched21 = value;
-                                    categoryComaplints["S. C. Dey"] =
-                                        isSwitched21;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('S. C. Dey'),
-                            ),
-                            ListTile(
-                              leading: Switch(
-                                value: isSwitched22,
-                                onChanged: (value) {
-                                  setState(() {
-                                    isSwitched22 = value;
-                                    categoryComaplints["IIT Boys (Saluja)"] =
-                                        isSwitched22;
-                                    _filter.notifyListeners();
-                                  });
-                                },
-                                activeTrackColor: Colors.grey[800],
-                                activeColor: Colors.white,
-                              ),
-                              title: Text('IIT Boys (Saluja)'),
+                              title: Text('Illegal waste disposal'),
                             ),
                           ],
                         ),
@@ -789,7 +501,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   ),
                   Divider(
                     height: 0.5,
-                    color: Color(0xFF181D3D),
+                    color: Color(0xFF003153),
                     thickness: 0.5,
                     indent: 15.0,
                     endIndent: 15.0,
@@ -797,14 +509,14 @@ class _NavDrawerState extends State<NavDrawer> {
                   ListTile(
                     leading: Icon(
                       Icons.person,
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                     ),
                     title: Text('About'),
                     onTap: () => {Navigator.pushNamed(context, '/about')},
                   ),
                   Divider(
                     height: 0.5,
-                    color: Color(0xFF181D3D),
+                    color: Color(0xFF003153),
                     thickness: 0.5,
                     indent: 15.0,
                     endIndent: 15.0,
@@ -812,7 +524,7 @@ class _NavDrawerState extends State<NavDrawer> {
                   ListTile(
                     leading: Icon(
                       Icons.reply,
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                     ),
                     title: Text('Log Out'),
                     onTap: () async {
@@ -868,6 +580,7 @@ class Bookmarks extends StatelessWidget {
                       filingTime: doc.data()['filing time'],
                       category: doc.data()["category"],
                       description: doc.data()["description"],
+                      address: doc.data()["address"],
                       status: doc.data()["status"],
                       upvotes: doc.data()['upvotes'],
                       id: doc.id,

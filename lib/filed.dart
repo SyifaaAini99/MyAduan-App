@@ -1,4 +1,5 @@
-import 'package:InstiComplaints/feedCard.dart';
+import 'package:MyAduan/feedCard.dart';
+import 'package:MyAduan/notifications.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -40,7 +41,7 @@ class _FiledState extends State<Filed> with SingleTickerProviderStateMixin {
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height * 0.035,
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -49,7 +50,7 @@ class _FiledState extends State<Filed> with SingleTickerProviderStateMixin {
                           clipper: CurveClipper(),
                           child: Container(
                             //constraints: BoxConstraints.expand(),
-                            color: Color(0xFF181D3D),
+                            color: Color(0xFF003153),
                           )),
                     ),
                   ],
@@ -71,7 +72,7 @@ class _FiledState extends State<Filed> with SingleTickerProviderStateMixin {
                           width: 35.0,
                         ),
                         Text(
-                          'InstiComplaints',
+                          'MyAduan',
                           style: TextStyle(
                             fontSize: 25.0,
                             color: Colors.white,
@@ -206,6 +207,7 @@ class _ComplaintTile1State extends State<ComplaintTile1> {
                 return Loading();
               case ConnectionState.done:
                 if (user.hasError) return Text('Error: ${user.error}');
+
                 if (user.data["status"] != 'Solved')
                   return ComplaintOverviewCard(
                     title: user.data["title"],
@@ -214,6 +216,7 @@ class _ComplaintTile1State extends State<ComplaintTile1> {
                     filingTime: user.data['filing time'],
                     category: user.data["category"],
                     description: user.data["description"],
+                    address: user.data['address'],
                     status: user.data["status"],
                     upvotes: user.data['upvotes'],
                     id: user.data.id,

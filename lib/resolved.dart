@@ -1,4 +1,4 @@
-import 'package:InstiComplaints/feedCard.dart';
+import 'package:MyAduan/feedCard.dart';
 import 'ComplaintDialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class _ResolvedState extends State<Resolved>
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height * 0.035,
-                      color: Color(0xFF181D3D),
+                      color: Color(0xFF003153),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -47,7 +47,7 @@ class _ResolvedState extends State<Resolved>
                           clipper: CurveClipper(),
                           child: Container(
                             //constraints: BoxConstraints.expand(),
-                            color: Color(0xFF181D3D),
+                            color: Color(0xFF003153),
                           )),
                     ),
                   ],
@@ -69,7 +69,7 @@ class _ResolvedState extends State<Resolved>
                           width: 35.0,
                         ),
                         Text(
-                          'InstiComplaints',
+                          'MyAduan',
                           style: TextStyle(
                             fontSize: 25.0,
                             color: Colors.white,
@@ -154,6 +154,7 @@ class ResolvedList extends StatelessWidget {
                       filingTime: doc.data()['filing time'],
                       category: doc.data()["category"],
                       description: doc.data()["description"],
+                      address: doc.data()['address'],
                       status: doc.data()["status"],
                       upvotes: doc.data()['upvotes'],
                       id: doc.id,

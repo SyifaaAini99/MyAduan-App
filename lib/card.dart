@@ -14,30 +14,31 @@ class Category {
 }
 
 List<Category> categories = [
-  Category(name: 'Room no.', iconName: Icons.person_pin, text: 'C-304'),
-  Category(
-      name: 'Hostel Name',
-      iconName: Icons.location_on,
-      text: 'Ramanujan Hostel'),
+  Category(name: 'Phone no.', iconName: Icons.person_pin, text: '601'),
+  Category(name: 'City', iconName: Icons.location_on, text: 'Penang'),
+  Category(name: 'address', iconName: Icons.location_on, text: 'Address'),
 ];
 
 final List<String> hostels = [
-  'C.V. Raman',
-  'Morvi',
-  'Dhanrajgiri',
-  'Rajputana',
-  'Limbdi',
-  'Vivekanand',
-  'Vishwakarma',
-  'Vishweshvaraiya',
-  'Aryabhatt-I',
-  'Aryabhatt-II',
-  'S.N. Bose',
-  'Ramanujan',
-  'Gandhi Smriti Chhatravas (OLD)',
-  'Gandhi Smriti Chhatravas (Extension)',
-  'IIT (BHU) Girls’ Hostel',
-  'S.C. Dey Girls',
+  'Ayer Itam',
+  'Balik Pulau',
+  'Batu Ferringhi',
+  'Batu Maung',
+  'Bayan Lepas',
+  'Bukit Mertajam',
+  'Butterworth',
+  'Gelugor',
+  'Jelutong',
+  'Kepala Batas',
+  'Kubang Semang',
+  'Nibong Tebal',
+  'Penang Hill',
+  'Perai',
+  'Permatang Pauh',
+  'Simpang Ampat',
+  'Sungai Jawi',
+  'Tanjong Bungah',
+  'Tasek Gelugor'
 ];
 
 class CardCategory extends StatefulWidget {
@@ -59,6 +60,7 @@ class _CardCategoryState extends State<CardCategory> {
                 ],
               ),
               content: TextField(
+                keyboardType: TextInputType.number,
                 controller: customController,
               ),
               actions: <Widget>[
@@ -75,23 +77,24 @@ class _CardCategoryState extends State<CardCategory> {
                       FirebaseFirestore.instance
                           .collection('users')
                           .doc(user.uid)
-                          .update({'roomNo': customController.text.toString()});
+                          .update(
+                              {'phoneNo': customController.text.toString()});
                     });
 
                     Navigator.of(context).pop();
                   },
                   elevation: 5.0,
                   child: Text('Save'),
-                )
+                ),
               ]);
         });
   }
 
-  Future<void> editList2(BuildContext context, String hostelname) {
+  Future<void> editList2(BuildContext context, String city) {
     return showDialog(
         context: context,
         builder: (context) {
-          return EditHostel(hostelname: hostelname);
+          return EditCity(city: city);
         });
   }
 
@@ -113,7 +116,7 @@ class _CardCategoryState extends State<CardCategory> {
               return Loading();
             case ConnectionState.done:
               if (user.hasError) return Text('Error: ${user.error}');
-              var hostel = user.data['hostel'];
+              var city = user.data['city'];
               return Column(
                 children: [
                   Card(
@@ -139,7 +142,7 @@ class _CardCategoryState extends State<CardCategory> {
                                 children: [
                                   Icon(categories[0].iconName),
                                   SizedBox(width: 5.0),
-                                  Text(user.data['roomNo'],
+                                  Text(user.data['phoneNo'],
                                       style: TextStyle(
                                         color: Colors.black87,
                                         fontFamily: 'Roboto',
@@ -180,7 +183,7 @@ class _CardCategoryState extends State<CardCategory> {
                                 children: [
                                   Icon(categories[1].iconName),
                                   SizedBox(width: 5.0),
-                                  Text(user.data['hostel'],
+                                  Text(user.data['city'],
                                       style: TextStyle(
                                         color: Colors.black87,
                                         fontFamily: 'Roboto',
@@ -191,7 +194,7 @@ class _CardCategoryState extends State<CardCategory> {
                           ),
                           IconButton(
                               onPressed: () {
-                                editList2(context, user.data['hostel'])
+                                editList2(context, user.data['city'])
                                     .then((value) => setState(() {}));
                               },
                               icon: Icon(Icons.edit, color: Colors.red)),
@@ -207,16 +210,16 @@ class _CardCategoryState extends State<CardCategory> {
   }
 }
 
-class EditHostel extends StatefulWidget {
-  String hostelname;
-  EditHostel({Key key, @required this.hostelname}) : super(key: key);
+class EditCity extends StatefulWidget {
+  String city;
+  EditCity({Key key, @required this.city}) : super(key: key);
   @override
-  _EditHostelState createState() => _EditHostelState(hostelname);
+  _EditCityState createState() => _EditCityState(city);
 }
 
-class _EditHostelState extends State<EditHostel> {
-  String hostelname;
-  _EditHostelState(this.hostelname);
+class _EditCityState extends State<EditCity> {
+  String city;
+  _EditCityState(this.city);
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -235,15 +238,15 @@ class _EditHostelState extends State<EditHostel> {
                       .map((e) => RadioListTile(
                             title: Text(e),
                             value: e,
-                            groupValue: hostelname,
+                            groupValue: city,
                             onChanged: (value) {
-                              if (value != hostelname) {
+                              if (value != city) {
                                 setState(() {
-                                  hostelname = value;
+                                  city = value;
                                 });
                               }
                             },
-                            selected: hostelname == e,
+                            selected: city == e,
                           ))
                       .toList(),
                 ))),
@@ -260,7 +263,7 @@ class _EditHostelState extends State<EditHostel> {
               await FirebaseFirestore.instance
                   .collection('users')
                   .doc(user.uid)
-                  .update({'hostel': hostelname});
+                  .update({'city': city});
 
               Navigator.of(context).pop();
             },

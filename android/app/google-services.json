@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "766322402533",
-    "firebase_url": "https://insticomplaints.firebaseio.com",
-    "project_id": "insticomplaints",
-    "storage_bucket": "insticomplaints.appspot.com"
+    "project_number": "444734826133",
+    "firebase_url": "https://my-aduan-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "my-aduan-app",
+    "storage_bucket": "my-aduan-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:766322402533:android:bdc9b48579c28dd25de00c",
+        "mobilesdk_app_id": "1:444734826133:android:db3fc24fbf264e52a8dd9c",
         "android_client_info": {
-          "package_name": "com.example.InstiComplaints"
+          "package_name": "com.example.MyAduan"
         }
       },
       "oauth_client": [
         {
-          "client_id": "766322402533-vrf39v5d0i9u7llv8rs1a6d8p1fk6g4q.apps.googleusercontent.com",
+          "client_id": "444734826133-q1f8temtliufhak1c3g9u1dsjqshddac.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.InstiComplaints",
-            "certificate_hash": "209b99f83f299629d2856c46bdbfd88136ede267"
+            "package_name": "com.example.MyAduan",
+            "certificate_hash": "58db03ccd81a756f1ac67db9fe72268b361f0168"
           }
         },
         {
-          "client_id": "766322402533-1ral9kskgmgf6efmbhodsvcboiuvtisd.apps.googleusercontent.com",
+          "client_id": "444734826133-bi58ec6vmd14chvjvogc921eh8ghgbtt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCYL3dDz_O7XdTHq1synjJZnxeoD5Js1_4"
+          "current_key": "AIzaSyCVJLxBwS54aaWz0TQz9oo8Fze2f0S8F4M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "766322402533-1ral9kskgmgf6efmbhodsvcboiuvtisd.apps.googleusercontent.com",
+              "client_id": "444734826133-bi58ec6vmd14chvjvogc921eh8ghgbtt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

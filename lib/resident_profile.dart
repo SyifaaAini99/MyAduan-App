@@ -1,4 +1,4 @@
-import 'package:InstiComplaints/loading.dart';
+import 'package:MyAduan/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
               }
               print(res_list);
               return Container(
-                color: Color(0xFF181D3D),
+                color: Color(0xFF003153),
                 child: SafeArea(
                   child: Scaffold(
                     key: _scaffoldState,
@@ -97,7 +97,7 @@ class _ProfileState extends State<Profile> {
                                 clipper: CurveClipper(),
                                 child: Container(
                                   constraints: BoxConstraints.expand(),
-                                  color: Color(0xFF181D3D),
+                                  color: Color(0xFF003153),
                                   child: Column(
                                     children: [
                                       SizedBox(height: 25.0),
@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
                                             width: 35.0,
                                           ),
                                           Text(
-                                            'InstiComplaints',
+                                            'MyAduan',
                                             style: TextStyle(
                                               fontSize: 25.0,
                                               color: Colors.white,
